@@ -8,7 +8,7 @@
 import UIKit
 
 class SecondViewController: UIViewController {
-    private(set) var kantouText:String?
+    private(set) var selectedPrefectureName:String?
    
     @IBOutlet private weak var tokyoButton: UIButton!
     
@@ -16,33 +16,32 @@ class SecondViewController: UIViewController {
     
     @IBOutlet  private weak var saitamaButton: UIButton!
     @IBOutlet private weak var chibaButton: UIButton!
+
     enum Kantou {
         static let tokyo = "東京都"
-         static let kanagawa = "神奈川県"
+        static let kanagawa = "神奈川県"
         static let saitama = "埼玉県"
-        static let  chiba = "千葉県"
+        static let chiba = "千葉県"
     }
+
     @IBAction func tokyoButton(_ sender: Any) {
+        select(prefectureName: Kantou.tokyo, sender: sender)
+    }
 
-        kantouText = Kantou.tokyo
-        performSegue(withIdentifier: "changesegue", sender: sender)
-        }
     @IBAction func kanagawaButton(_ sender: Any) {
-        kantouText = Kantou.kanagawa
-        performSegue(withIdentifier: "changesegue", sender: sender)
-
-        
+        select(prefectureName: Kantou.kanagawa, sender: sender)
     }
     
     @IBAction func saitamaButton(_ sender: Any) {
-        kantouText = Kantou.saitama
-        performSegue(withIdentifier: "changesegue", sender: sender)
+        select(prefectureName: Kantou.saitama, sender: sender)
     }
     
     @IBAction func chibaButton(_ sender: Any) {
-        kantouText = Kantou.chiba
+        select(prefectureName: Kantou.chiba, sender: sender)
+    }
+
+    private func select(prefectureName: String, sender: Any) {
+        selectedPrefectureName = prefectureName
         performSegue(withIdentifier: "changesegue", sender: sender)
     }
-    
-    
 }

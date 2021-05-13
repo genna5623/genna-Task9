@@ -10,19 +10,14 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet private weak var resultLabel: UILabel!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
+
     @IBAction func exitBySegue(segue:UIStoryboardSegue){
-        guard let result = segue.source as? SecondViewController else
+        guard let secondViewController = segue.source as? SecondViewController else
         {return}
-        resultLabel.text = result.kantouText
+        resultLabel.text = secondViewController.selectedPrefectureName
     }
     
     @IBAction func exitCancel(segue:UIStoryboardSegue) {
 
     }
-
 }
-
